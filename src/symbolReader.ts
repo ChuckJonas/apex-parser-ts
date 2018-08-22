@@ -1,16 +1,8 @@
+import { Token } from 'antlr4ts/Token';
 
-import {ClassDeclarationContext,
-        MethodParametersContext,
-        ClassConstructorContext,
-        ClassMethodContext,
-        ClassPropertyContext} from './grammar/ApexcodeParser';
+import { ApexcodeListener } from './grammar/ApexcodeListener';
+import { ApexcodeParser, ClassConstructorContext, ClassDeclarationContext, ClassMethodContext, ClassPropertyContext, MethodParametersContext } from './grammar/ApexcodeParser';
 
-import {TerminalNode} from 'antlr4ts/tree';
-
-import {Token} from 'antlr4ts/Token';
-import {TokenStream} from 'antlr4ts/TokenStream';
-import {ApexcodeParser} from './grammar/ApexcodeParser';
-import {ApexcodeListener} from './grammar/ApexcodeListener';
 
 export class Position{
     public line: number;

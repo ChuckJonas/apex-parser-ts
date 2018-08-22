@@ -1,13 +1,13 @@
 'use strict';
-
-import {ANTLRInputStream, CommonTokenStream} from 'antlr4ts';
-import {TerminalNode, ParseTreeWalker}  from 'antlr4ts/tree';
-import {ApexcodeLexer} from './grammar/ApexcodeLexer'
-import {ApexcodeParser} from './grammar/ApexcodeParser'
-import {SymbolReader, SymbolTable} from './symbolReader'
-
+import { ANTLRInputStream, CommonTokenStream } from 'antlr4ts';
+import { ParseTreeWalker } from 'antlr4ts/tree';
 import * as fs from 'fs';
-import * as os from 'os';
+
+import { ApexcodeLexer } from './grammar/ApexcodeLexer';
+import { ApexcodeParser } from './grammar/ApexcodeParser';
+import { SymbolReader } from './symbolReader';
+import { ApexcodeListener } from './grammar/ApexcodeListener';
+
 
 export class ExtractSymbols{
 
@@ -33,7 +33,7 @@ export class ExtractSymbols{
         parser.buildParseTree = true;
         var tree = parser.compilationUnit();
         let symbolListener = new SymbolReader(parser);
-        ParseTreeWalker.DEFAULT.walk(symbolListener, tree);
+        ParseTreeWalker.DEFAULT.walk(symbolListener as ApexcodeListener, tree);
         return symbolListener;
     }
 
